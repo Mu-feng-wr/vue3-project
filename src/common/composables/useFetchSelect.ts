@@ -23,7 +23,7 @@ export function useFetchSelect(props: FetchSelectProps) {
 
   const options = ref<SelectOption[]>([])
 
-  const value = ref<OptionValue>("")
+  const value = ref<OptionValue>('')
 
   // 调用接口获取数据
   const loadData = () => {

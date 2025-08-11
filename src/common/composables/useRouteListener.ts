@@ -1,13 +1,13 @@
-import type { Handler } from "mitt"
-import type { RouteLocationNormalizedGeneric } from "vue-router"
-import mitt from "mitt"
+import type { Handler } from 'mitt'
+import type { RouteLocationNormalizedGeneric } from 'vue-router'
+import mitt from 'mitt'
 
 /** 回调函数的类型 */
 type Callback = (route: RouteLocationNormalizedGeneric) => void
 
 const emitter = mitt()
 
-const key = Symbol("ROUTE_CHANGE")
+const key = Symbol('ROUTE_CHANGE')
 
 let latestRoute: RouteLocationNormalizedGeneric
 

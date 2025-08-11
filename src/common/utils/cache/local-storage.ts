@@ -1,10 +1,10 @@
 // 统一处理 localStorage
 
-import type { ThemeName } from "@@/composables/useTheme"
-import type { SidebarClosed, SidebarOpened } from "@@/constants/app-key"
-import type { LayoutsConfig } from "@/layouts/config"
-import type { TagView } from "@/pinia/stores/tags-view"
-import { CacheKey } from "@@/constants/cache-key"
+import type { ThemeName } from '@@/composables/useTheme'
+import type { SidebarClosed, SidebarOpened } from '@@/constants/app-key'
+import type { LayoutsConfig } from '@/layouts/config'
+import type { TagView } from '@/pinia/stores/tags-view'
+import { CacheKey } from '@@/constants/cache-key'
 
 // #region 系统布局配置
 export function getLayoutsConfig() {
@@ -44,7 +44,7 @@ export function setActiveThemeName(themeName: ThemeName) {
 // #region 标签栏
 export function getVisitedViews() {
   const json = localStorage.getItem(CacheKey.VISITED_VIEWS)
-  return JSON.parse(json ?? "[]") as TagView[]
+  return JSON.parse(json ?? '[]') as TagView[]
 }
 
 export function setVisitedViews(views: TagView[]) {
@@ -58,7 +58,7 @@ export function setVisitedViews(views: TagView[]) {
 
 export function getCachedViews() {
   const json = localStorage.getItem(CacheKey.CACHED_VIEWS)
-  return JSON.parse(json ?? "[]") as string[]
+  return JSON.parse(json ?? '[]') as string[]
 }
 
 export function setCachedViews(views: string[]) {

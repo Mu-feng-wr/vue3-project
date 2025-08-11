@@ -38,13 +38,13 @@
 </template>
 
 <script lang="ts" setup>
-import type { RouteRecordNameGeneric, RouteRecordRaw } from "vue-router"
-import { useDevice } from "@@/composables/useDevice"
-import { isExternal } from "@@/utils/validate"
-import { cloneDeep, debounce } from "lodash-es"
-import { usePermissionStore } from "@/pinia/stores/permission"
-import Footer from "./Footer.vue"
-import Result from "./Result.vue"
+import type { RouteRecordNameGeneric, RouteRecordRaw } from 'vue-router'
+import { useDevice } from '@@/composables/useDevice'
+import { isExternal } from '@@/utils/validate'
+import { cloneDeep, debounce } from 'lodash-es'
+import { usePermissionStore } from '@/pinia/stores/permission'
+import Footer from './Footer.vue'
+import Result from './Result.vue'
 
 /** 控制 modal 显隐 */
 const modelValue = defineModel<boolean>({ required: true })
@@ -53,13 +53,13 @@ const router = useRouter()
 
 const { isMobile } = useDevice()
 
-const inputRef = useTemplateRef("inputRef")
+const inputRef = useTemplateRef('inputRef')
 
-const scrollbarRef = useTemplateRef("scrollbarRef")
+const scrollbarRef = useTemplateRef('scrollbarRef')
 
-const resultRef = useTemplateRef("resultRef")
+const resultRef = useTemplateRef('resultRef')
 
-const keyword = ref<string>("")
+const keyword = ref<string>('')
 
 const result = shallowRef<RouteRecordRaw[]>([])
 
@@ -69,7 +69,7 @@ const activeRouteName = ref<RouteRecordNameGeneric | undefined>(undefined)
 const isPressUpOrDown = ref<boolean>(false)
 
 /** 控制搜索对话框宽度 */
-const modalWidth = computed(() => (isMobile.value ? "80vw" : "40vw"))
+const modalWidth = computed(() => (isMobile.value ? '80vw' : '40vw'))
 
 /** 树形菜单 */
 const menus = computed(() => cloneDeep(usePermissionStore().routes))
@@ -98,7 +98,7 @@ function handleClose() {
   modelValue.value = false
   // 延时处理防止用户看到重置数据的操作
   setTimeout(() => {
-    keyword.value = ""
+    keyword.value = ''
     result.value = []
   }, 200)
 }
@@ -167,12 +167,12 @@ function handleEnter() {
   if (length === 0) return
   const name = activeRouteName.value
   const path = result.value.find(item => item.name === name)?.path
-  if (path && isExternal(path)) return window.open(path, "_blank", "noopener, noreferrer")
-  if (!name) return ElMessage.warning("无法通过搜索进入该菜单，请为对应的路由设置唯一的 Name")
+  if (path && isExternal(path)) return window.open(path, '_blank', 'noopener, noreferrer')
+  if (!name) return ElMessage.warning('无法通过搜索进入该菜单，请为对应的路由设置唯一的 Name')
   try {
     router.push({ name })
   } catch {
-    return ElMessage.warning("该菜单有必填的动态参数，无法通过搜索进入")
+    return ElMessage.warning('该菜单有必填的动态参数，无法通过搜索进入')
   }
   handleClose()
 }

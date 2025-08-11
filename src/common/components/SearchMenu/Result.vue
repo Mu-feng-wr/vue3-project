@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { RouteRecordNameGeneric, RouteRecordRaw } from "vue-router"
+import type { RouteRecordNameGeneric, RouteRecordRaw } from 'vue-router'
 
 interface Props {
   data: RouteRecordRaw[]
@@ -40,8 +40,8 @@ const scrollbarHeight = ref<number>(0)
 function itemStyle(item: RouteRecordRaw) {
   const flag = item.name === modelValue.value
   return {
-    background: flag ? "var(--el-color-primary)" : "",
-    color: flag ? "#ffffff" : ""
+    background: flag ? 'var(--el-color-primary)' : '',
+    color: flag ? '#ffffff' : ''
   }
 }
 
@@ -70,7 +70,7 @@ function getScrollTop(index: number) {
 
 // 在组件挂载前添加窗口大小变化事件监听器
 onBeforeMount(() => {
-  window.addEventListener("resize", getScrollbarHeight)
+  window.addEventListener('resize', getScrollbarHeight)
 })
 
 // 在组件挂载时立即计算滚动可视区高度
@@ -80,14 +80,14 @@ onMounted(() => {
 
 // 在组件卸载前移除窗口大小变化事件监听器
 onBeforeUnmount(() => {
-  window.removeEventListener("resize", getScrollbarHeight)
+  window.removeEventListener('resize', getScrollbarHeight)
 })
 
 defineExpose({ getScrollTop })
 </script>
 
 <style lang="scss" scoped>
-@import "@@/assets/styles/mixins.scss";
+@import '@@/assets/styles/mixins.scss';
 
 .result-item {
   display: flex;

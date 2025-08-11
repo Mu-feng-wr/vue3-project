@@ -1,8 +1,8 @@
-import { useSettingsStore } from "@/pinia/stores/settings"
+import { useSettingsStore } from '@/pinia/stores/settings'
 
-const GREY_MODE = "grey-mode"
+const GREY_MODE = 'grey-mode'
 
-const COLOR_WEAKNESS = "color-weakness"
+const COLOR_WEAKNESS = 'color-weakness'
 
 const classList = document.documentElement.classList
 

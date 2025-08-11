@@ -1,8 +1,8 @@
 /** 项目标题 */
-const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE ?? "V3 Admin Vite"
+const VITE_APP_TITLE = import.meta.env.VITE_APP_TITLE ?? 'V3 Admin Vite'
 
 /** 动态标题 */
-const dynamicTitle = ref<string>("")
+const dynamicTitle = ref<string>('')
 
 /** 设置标题 */
 function setTitle(title?: string) {

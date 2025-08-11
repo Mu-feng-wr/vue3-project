@@ -1,12 +1,12 @@
-import { getActiveThemeName, setActiveThemeName } from "@@/utils/cache/local-storage"
-import { setCssVar } from "@@/utils/css"
+import { getActiveThemeName, setActiveThemeName } from '@@/utils/cache/local-storage'
+import { setCssVar } from '@@/utils/css'
 
-const DEFAULT_THEME_NAME = "normal"
+const DEFAULT_THEME_NAME = 'normal'
 
 type DefaultThemeName = typeof DEFAULT_THEME_NAME
 
 /** 注册的主题名称, 其中 DefaultThemeName 是必填的 */
-export type ThemeName = DefaultThemeName | "dark" | "dark-blue"
+export type ThemeName = DefaultThemeName | 'dark' | 'dark-blue'
 
 interface ThemeList {
   title: string
@@ -16,16 +16,16 @@ interface ThemeList {
 /** 主题列表 */
 const themeList: ThemeList[] = [
   {
-    title: "默认",
+    title: '默认',
     name: DEFAULT_THEME_NAME
   },
   {
-    title: "黑暗",
-    name: "dark"
+    title: '黑暗',
+    name: 'dark'
   },
   {
-    title: "深蓝",
-    name: "dark-blue"
+    title: '深蓝',
+    name: 'dark-blue'
   }
 ]
 
@@ -38,9 +38,9 @@ function setTheme({ clientX, clientY }: MouseEvent, value: ThemeName) {
     Math.max(clientX, window.innerWidth - clientX),
     Math.max(clientY, window.innerHeight - clientY)
   )
-  setCssVar("--v3-theme-x", `${clientX}px`)
-  setCssVar("--v3-theme-y", `${clientY}px`)
-  setCssVar("--v3-theme-r", `${maxRadius}px`)
+  setCssVar('--v3-theme-x', `${clientX}px`)
+  setCssVar('--v3-theme-y', `${clientY}px`)
+  setCssVar('--v3-theme-r', `${maxRadius}px`)
   const handler = () => {
     activeThemeName.value = value
   }

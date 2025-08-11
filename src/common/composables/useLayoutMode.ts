@@ -1,5 +1,5 @@
-import { LayoutModeEnum } from "@@/constants/app-key"
-import { useSettingsStore } from "@/pinia/stores/settings"
+import { LayoutModeEnum } from '@@/constants/app-key'
+import { useSettingsStore } from '@/pinia/stores/settings'
 
 const settingsStore = useSettingsStore()
 

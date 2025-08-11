@@ -1,28 +1,28 @@
 /// <reference types="vitest/config" />
 
-import { resolve } from "node:path"
-import vue from "@vitejs/plugin-vue"
-import UnoCSS from "unocss/vite"
-import AutoImport from "unplugin-auto-import/vite"
-import SvgComponent from "unplugin-svg-component/vite"
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
-import Components from "unplugin-vue-components/vite"
-import { defineConfig } from "vite" // loadEnv
+import { resolve } from 'node:path'
+import vue from '@vitejs/plugin-vue'
+import UnoCSS from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import SvgComponent from 'unplugin-svg-component/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite' // loadEnv
 // import { VueMcp } from "vite-plugin-vue-mcp"
-import svgLoader from "vite-svg-loader"
+import svgLoader from 'vite-svg-loader'
 
 // Configuring Vite: https://cn.vite.dev/config
 export default defineConfig(({ mode }) => {
-  const VITE_PUBLIC_PATH = ""
+  const VITE_PUBLIC_PATH = ''
   return {
     // 开发或打包构建时用到的公共基础路径
     base: VITE_PUBLIC_PATH,
     resolve: {
       alias: {
         // @ 符号指向 src 目录
-        "@": resolve(__dirname, "src"),
+        '@': resolve(__dirname, 'src'),
         // @@ 符号指向 src/common 通用目录
-        "@@": resolve(__dirname, "src/common")
+        '@@': resolve(__dirname, 'src/common')
       }
     },
     // 开发环境服务器配置
@@ -37,8 +37,8 @@ export default defineConfig(({ mode }) => {
       open: true,
       // 反向代理
       proxy: {
-        "/api/v1": {
-          target: "https://apifoxmock.com/m1/2930465-2145633-default",
+        '/api/v1': {
+          target: 'https://apifoxmock.com/m1/2930465-2145633-default',
           // 是否为 WebSocket
           ws: false,
           // 是否允许跨域
@@ -50,9 +50,9 @@ export default defineConfig(({ mode }) => {
       // 预热常用文件，提高初始页面加载速度
       warmup: {
         clientFiles: [
-          "./src/layouts/**/*.*",
-          "./src/pinia/**/*.*",
-          "./src/router/**/*.*"
+          './src/layouts/**/*.*',
+          './src/pinia/**/*.*',
+          './src/router/**/*.*'
         ]
       }
     },
@@ -67,9 +67,9 @@ export default defineConfig(({ mode }) => {
            * @description 2. 如果你不想自定义 chunk 分割策略，可以直接移除这段配置
            */
           manualChunks: {
-            vue: ["vue", "vue-router", "pinia"],
-            element: ["element-plus", "@element-plus/icons-vue"],
-            vxe: ["vxe-table"]
+            vue: ['vue', 'vue-router', 'pinia'],
+            element: ['element-plus', '@element-plus/icons-vue'],
+            vxe: ['vxe-table']
           }
         }
       },
@@ -80,19 +80,19 @@ export default defineConfig(({ mode }) => {
     },
     // 混淆器
     esbuild:
-      mode === "development"
+      mode === 'development'
         ? undefined
         : {
             // 打包构建时移除 console.log
-            pure: ["console.log"],
+            pure: ['console.log'],
             // 打包构建时移除 debugger
-            drop: ["debugger"],
+            drop: ['debugger'],
             // 打包构建时移除所有注释
-            legalComments: "none"
+            legalComments: 'none'
           },
     // 依赖预构建
     optimizeDeps: {
-      include: ["element-plus/es/components/*/style/css"]
+      include: ['element-plus/es/components/*/style/css']
     },
     // CSS 相关配置
     css: {
@@ -104,11 +104,11 @@ export default defineConfig(({ mode }) => {
       vue(),
       // 支持将 SVG 文件导入为 Vue 组件
       svgLoader({
-        defaultImport: "url",
+        defaultImport: 'url',
         svgoConfig: {
           plugins: [
             {
-              name: "preset-default",
+              name: 'preset-default',
               params: {
                 overrides: {
                   // @see https://github.com/svg/svgo/issues/1128
@@ -121,22 +121,22 @@ export default defineConfig(({ mode }) => {
       }),
       // 自动生成 SvgIcon 组件和 SVG 雪碧图
       SvgComponent({
-        iconDir: [resolve(__dirname, "src/common/assets/icons")],
-        preserveColor: resolve(__dirname, "src/common/assets/icons/preserve-color"),
+        iconDir: [resolve(__dirname, 'src/common/assets/icons')],
+        preserveColor: resolve(__dirname, 'src/common/assets/icons/preserve-color'),
         dts: true,
-        dtsDir: resolve(__dirname, "types/auto")
+        dtsDir: resolve(__dirname, 'types/auto')
       }),
       // 原子化 CSS
       UnoCSS(),
       // 自动按需导入 API
       AutoImport({
-        imports: ["vue", "vue-router", "pinia"],
-        dts: "types/auto/auto-imports.d.ts",
+        imports: ['vue', 'vue-router', 'pinia'],
+        dts: 'types/auto/auto-imports.d.ts',
         resolvers: [ElementPlusResolver()]
       }),
       // 自动按需导入组件
       Components({
-        dts: "types/auto/components.d.ts",
+        dts: 'types/auto/components.d.ts',
         resolvers: [ElementPlusResolver()]
       })
       // 为项目开启 MCP Server
@@ -144,11 +144,11 @@ export default defineConfig(({ mode }) => {
     ],
     // Configuring Vitest: https://cn.vitest.dev/config
     test: {
-      include: ["tests/**/*.test.{ts,js}"],
-      environment: "happy-dom",
+      include: ['tests/**/*.test.{ts,js}'],
+      environment: 'happy-dom',
       server: {
         deps: {
-          inline: ["element-plus"]
+          inline: ['element-plus']
         }
       }
     }

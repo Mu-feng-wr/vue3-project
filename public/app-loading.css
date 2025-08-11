@@ -19,7 +19,7 @@
 
 #app-loading::before,
 #app-loading::after {
-  content: "";
+  content: '';
   position: absolute;
 }
 

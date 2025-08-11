@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { NotifyItem } from "./type"
+import type { NotifyItem } from './type'
 
 interface Props {
   data: NotifyItem[]

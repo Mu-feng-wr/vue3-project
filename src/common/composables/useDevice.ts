@@ -1,5 +1,5 @@
-import { DeviceEnum } from "@@/constants/app-key"
-import { useAppStore } from "@/pinia/stores/app"
+import { DeviceEnum } from '@@/constants/app-key'
+import { useAppStore } from '@/pinia/stores/app'
 
 const appStore = useAppStore()
 

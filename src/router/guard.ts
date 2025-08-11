@@ -1,18 +1,18 @@
-import type { Router } from "vue-router"
-import { setRouteChange } from "@@/composables/useRouteListener"
-import { useTitle } from "@@/composables/useTitle"
-import { getToken } from "@@/utils/cache/cookies"
-import NProgress from "nprogress"
-import { usePermissionStore } from "@/pinia/stores/permission"
-import { useUserStore } from "@/pinia/stores/user"
-import { routerConfig } from "@/router/config"
-import { isWhiteList } from "@/router/whitelist"
+import type { Router } from 'vue-router'
+import { setRouteChange } from '@@/composables/useRouteListener'
+import { useTitle } from '@@/composables/useTitle'
+import { getToken } from '@@/utils/cache/cookies'
+import NProgress from 'nprogress'
+import { usePermissionStore } from '@/pinia/stores/permission'
+import { useUserStore } from '@/pinia/stores/user'
+import { routerConfig } from '@/router/config'
+import { isWhiteList } from '@/router/whitelist'
 
 NProgress.configure({ showSpinner: false })
 
 const { setTitle } = useTitle()
 
-const LOGIN_PATH = "/login"
+const LOGIN_PATH = '/login'
 
 export function registerNavigationGuard(router: Router) {
   // 全局前置守卫
@@ -28,7 +28,7 @@ export function registerNavigationGuard(router: Router) {
       return LOGIN_PATH
     }
     // 如果已经登录，并准备进入 Login 页面，则重定向到主页
-    if (to.path === LOGIN_PATH) return "/"
+    if (to.path === LOGIN_PATH) return '/'
     // 如果用户已经获得其权限角色
     if (userStore.roles.length !== 0) return true
     // 否则要重新获取权限角色
@@ -45,7 +45,7 @@ export function registerNavigationGuard(router: Router) {
     } catch (error) {
       // 过程中发生任何错误，都直接重置 Token，并重定向到登录页面
       userStore.resetToken()
-      ElMessage.error((error as Error).message || "路由守卫发生错误")
+      ElMessage.error((error as Error).message || '路由守卫发生错误')
       return LOGIN_PATH
     }
   })

@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import screenfull from "screenfull"
+import screenfull from 'screenfull'
 
 interface Props {
   /** 全屏的元素，默认是 html */
@@ -37,11 +37,11 @@ interface Props {
   content?: boolean
 }
 
-const { element = "html", openTips = "全屏", exitTips = "退出全屏", content = false } = defineProps<Props>()
+const { element = 'html', openTips = '全屏', exitTips = '退出全屏', content = false } = defineProps<Props>()
 
-const CONTENT_LARGE = "content-large"
+const CONTENT_LARGE = 'content-large'
 
-const CONTENT_FULL = "content-full"
+const CONTENT_FULL = 'content-full'
 
 const classList = document.body.classList
 
@@ -52,11 +52,11 @@ const isFullscreen = ref<boolean>(false)
 
 const fullscreenTips = computed(() => (isFullscreen.value ? exitTips : openTips))
 
-const fullscreenSvgName = computed(() => (isFullscreen.value ? "fullscreen-exit" : "fullscreen"))
+const fullscreenSvgName = computed(() => (isFullscreen.value ? 'fullscreen-exit' : 'fullscreen'))
 
 function handleFullscreenClick() {
   const dom = document.querySelector(element) || undefined
-  isEnabled ? screenfull.toggle(dom) : ElMessage.warning("您的浏览器无法工作")
+  isEnabled ? screenfull.toggle(dom) : ElMessage.warning('您的浏览器无法工作')
 }
 
 function handleFullscreenChange() {
@@ -68,10 +68,10 @@ function handleFullscreenChange() {
 watchEffect(() => {
   if (isEnabled) {
     // 挂载组件时自动执行
-    screenfull.on("change", handleFullscreenChange)
+    screenfull.on('change', handleFullscreenChange)
     // 卸载组件时自动执行
     onWatcherCleanup(() => {
-      screenfull.off("change", handleFullscreenChange)
+      screenfull.off('change', handleFullscreenChange)
     })
   }
 })
@@ -80,9 +80,9 @@ watchEffect(() => {
 // #region 内容区
 const isContentLarge = ref<boolean>(false)
 
-const contentLargeTips = computed(() => (isContentLarge.value ? "内容区复原" : "内容区放大"))
+const contentLargeTips = computed(() => (isContentLarge.value ? '内容区复原' : '内容区放大'))
 
-const contentLargeSvgName = computed(() => (isContentLarge.value ? "fullscreen-exit" : "fullscreen"))
+const contentLargeSvgName = computed(() => (isContentLarge.value ? 'fullscreen-exit' : 'fullscreen'))
 
 function handleContentLargeClick() {
   isContentLarge.value = !isContentLarge.value

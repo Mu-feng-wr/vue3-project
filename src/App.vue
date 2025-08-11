@@ -5,28 +5,20 @@
 </template>
 
 <script lang="ts" setup>
-import { useGreyAndColorWeakness } from "@@/composables/useGreyAndColorWeakness"
-import { usePany } from "@@/composables/usePany"
-import { useTheme } from "@@/composables/useTheme"
-import zhCn from "element-plus/es/locale/lang/zh-cn" // Element Plus 中文包
+// import { useGreyAndColorWeakness } from "@@/composables/useGreyAndColorWeakness"
 
-const { initTheme } = useTheme()
+// import { useTheme } from "@@/composables/useTheme"
+import zhCn from 'element-plus/es/locale/lang/zh-cn' // Element Plus 中文包
 
-const { initGreyAndColorWeakness } = useGreyAndColorWeakness()
+// const { initTheme } = useTheme()
 
-const { initStarNotification, initStoreNotification, initMobileNotification } = usePany()
+// const { initGreyAndColorWeakness } = useGreyAndColorWeakness()
 
 // 初始化主题
-initTheme()
+// initTheme()
 
 // 初始化灰色模式和色弱模式
-initGreyAndColorWeakness()
+// initGreyAndColorWeakness()
 
-// #region 初始化通知
-initStarNotification()
-
-initStoreNotification()
-
-initMobileNotification()
 // #endregion
 </script>

@@ -1,58 +1,58 @@
 <template>
   <div :class="layoutClasses" class="app-wrapper">
     <!-- mobile 端侧边栏遮罩层 -->
-    <div v-if="layoutClasses.mobile && layoutClasses.openSidebar" class="drawer-bg" @click="handleClickOutside" />
+    <!-- <div v-if="layoutClasses.mobile && layoutClasses.openSidebar" class="drawer-bg" @click="handleClickOutside" /> -->
     <!-- 左侧边栏 -->
     <Sidebar class="sidebar-container" />
     <!-- 主容器 -->
-    <div :class="{ hasTagsView: showTagsView }" class="main-container">
-      <!-- 头部导航栏和标签栏 -->
-      <div :class="{ 'fixed-header': fixedHeader }" class="layout-header">
-        <NavigationBar />
-        <TagsView v-show="showTagsView" />
-      </div>
-      <!-- 页面主体内容 -->
-      <AppMain class="app-main" />
-    </div>
+    <!-- <div :class="{ hasTagsView: showTagsView }" class="main-container"> -->
+    <!-- 头部导航栏和标签栏 -->
+    <!-- <div :class="{ 'fixed-header': fixedHeader }" class="layout-header"> -->
+    <!-- <NavigationBar /> -->
+    <!-- <TagsView v-show="showTagsView" /> -->
+    <!-- </div> -->
+    <!-- 页面主体内容 -->
+    <!-- <AppMain class="app-main" /> -->
+    <!-- </div> -->
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useDevice } from "@@/composables/useDevice"
-import { useLayoutMode } from "@@/composables/useLayoutMode"
-import { useAppStore } from "@/pinia/stores/app"
-import { useSettingsStore } from "@/pinia/stores/settings"
-import { AppMain, NavigationBar, Sidebar, TagsView } from "../components"
+// import { useDevice } from "@@/composables/useDevice"
+// import { useLayoutMode } from "@@/composables/useLayoutMode"
+// import { useAppStore } from "@/pinia/stores/app"
+// import { useSettingsStore } from "@/pinia/stores/settings"
+// import { AppMain, NavigationBar, Sidebar, TagsView } from "../components"
 
-const { isMobile } = useDevice()
+// const { isMobile } = useDevice()
 
-const { isLeft } = useLayoutMode()
+// const { isLeft } = useLayoutMode()
 
-const appStore = useAppStore()
+// const appStore = useAppStore()
 
-const settingsStore = useSettingsStore()
+// const settingsStore = useSettingsStore()
 
-const { showTagsView, fixedHeader } = storeToRefs(settingsStore)
+// const { showTagsView, fixedHeader } = storeToRefs(settingsStore)
 
 /** 定义计算属性 layoutClasses，用于控制布局的类名 */
 const layoutClasses = computed(() => {
   return {
-    hideSidebar: !appStore.sidebar.opened,
-    openSidebar: appStore.sidebar.opened,
-    withoutAnimation: appStore.sidebar.withoutAnimation,
-    mobile: isMobile.value,
-    noLeft: !isLeft.value
+    // hideSidebar: !appStore.sidebar.opened,
+    // openSidebar: appStore.sidebar.opened,
+    // withoutAnimation: appStore.sidebar.withoutAnimation,
+    // mobile: isMobile.value,
+    // noLeft: !isLeft.value
   }
 })
 
 /** 用于处理点击 mobile 端侧边栏遮罩层的事件 */
-function handleClickOutside() {
-  appStore.closeSidebar(false)
-}
+// function handleClickOutside() {
+// appStore.closeSidebar(false)
+// }
 </script>
 
 <style lang="scss" scoped>
-@import "@@/assets/styles/mixins.scss";
+@import '@@/assets/styles/mixins.scss';
 $transition-time: 0.35s;
 
 .app-wrapper {

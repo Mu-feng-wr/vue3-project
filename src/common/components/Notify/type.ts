@@ -3,6 +3,6 @@ export interface NotifyItem {
   title: string
   datetime?: string
   description?: string
-  status?: "primary" | "success" | "info" | "warning" | "danger"
+  status?: 'primary' | 'success' | 'info' | 'warning' | 'danger'
   extra?: string
 }

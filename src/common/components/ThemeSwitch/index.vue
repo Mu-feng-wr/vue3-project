@@ -23,8 +23,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useTheme } from "@@/composables/useTheme"
-import { MagicStick } from "@element-plus/icons-vue"
+import { useTheme } from '@@/composables/useTheme'
+import { MagicStick } from '@element-plus/icons-vue'
 
 const { themeList, activeThemeName, setTheme } = useTheme()
 </script>
