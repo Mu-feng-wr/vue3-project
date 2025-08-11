@@ -1,10 +1,3 @@
-<script lang="ts" setup>
-import { useTheme } from "@@/composables/useTheme"
-import { MagicStick } from "@element-plus/icons-vue"
-
-const { themeList, activeThemeName, setTheme } = useTheme()
-</script>
-
 <template>
   <el-dropdown trigger="click">
     <div>
@@ -28,3 +21,10 @@ const { themeList, activeThemeName, setTheme } = useTheme()
     </template>
   </el-dropdown>
 </template>
+
+<script lang="ts" setup>
+import { useTheme } from "@@/composables/useTheme"
+import { MagicStick } from "@element-plus/icons-vue"
+
+const { themeList, activeThemeName, setTheme } = useTheme()
+</script>

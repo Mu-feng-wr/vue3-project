@@ -1,3 +1,32 @@
+<template>
+  <template v-if="!alwaysShowRootMenu && theOnlyOneChild && !theOnlyOneChild.children">
+    <Link v-if="theOnlyOneChild.meta" :to="resolvePath(theOnlyOneChild.path)">
+      <el-menu-item :index="resolvePath(theOnlyOneChild.path)">
+        <SvgIcon v-if="theOnlyOneChild.meta.svgIcon" :name="theOnlyOneChild.meta.svgIcon" class="svg-icon" />
+        <component v-else-if="theOnlyOneChild.meta.elIcon" :is="theOnlyOneChild.meta.elIcon" class="el-icon" />
+        <template v-if="theOnlyOneChild.meta.title" #title>
+          <span class="title">{{ theOnlyOneChild.meta.title }}</span>
+        </template>
+      </el-menu-item>
+    </Link>
+  </template>
+  <el-sub-menu v-else :index="resolvePath(item.path)" teleported>
+    <template #title>
+      <SvgIcon v-if="item.meta?.svgIcon" :name="item.meta.svgIcon" class="svg-icon" />
+      <component v-else-if="item.meta?.elIcon" :is="item.meta.elIcon" class="el-icon" />
+      <span v-if="item.meta?.title" class="title">{{ item.meta.title }}</span>
+    </template>
+    <template v-if="item.children">
+      <Item
+        v-for="child in showingChildren"
+        :key="child.path"
+        :item="child"
+        :base-path="resolvePath(child.path)"
+      />
+    </template>
+  </el-sub-menu>
+</template>
+
 <script lang="ts" setup>
 import type { RouteRecordRaw } from "vue-router"
 import { isExternal } from "@@/utils/validate"
@@ -45,35 +74,6 @@ function resolvePath(routePath: string) {
   }
 }
 </script>
-
-<template>
-  <template v-if="!alwaysShowRootMenu && theOnlyOneChild && !theOnlyOneChild.children">
-    <Link v-if="theOnlyOneChild.meta" :to="resolvePath(theOnlyOneChild.path)">
-      <el-menu-item :index="resolvePath(theOnlyOneChild.path)">
-        <SvgIcon v-if="theOnlyOneChild.meta.svgIcon" :name="theOnlyOneChild.meta.svgIcon" class="svg-icon" />
-        <component v-else-if="theOnlyOneChild.meta.elIcon" :is="theOnlyOneChild.meta.elIcon" class="el-icon" />
-        <template v-if="theOnlyOneChild.meta.title" #title>
-          <span class="title">{{ theOnlyOneChild.meta.title }}</span>
-        </template>
-      </el-menu-item>
-    </Link>
-  </template>
-  <el-sub-menu v-else :index="resolvePath(item.path)" teleported>
-    <template #title>
-      <SvgIcon v-if="item.meta?.svgIcon" :name="item.meta.svgIcon" class="svg-icon" />
-      <component v-else-if="item.meta?.elIcon" :is="item.meta.elIcon" class="el-icon" />
-      <span v-if="item.meta?.title" class="title">{{ item.meta.title }}</span>
-    </template>
-    <template v-if="item.children">
-      <Item
-        v-for="child in showingChildren"
-        :key="child.path"
-        :item="child"
-        :base-path="resolvePath(child.path)"
-      />
-    </template>
-  </el-sub-menu>
-</template>
 
 <style lang="scss" scoped>
 @import "@@/assets/styles/mixins.scss";

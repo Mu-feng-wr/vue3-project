@@ -1,3 +1,24 @@
+<template>
+  <div class="scroll-container">
+    <el-tooltip content="向左滚动标签（超出最大宽度可点击）">
+      <el-icon class="arrow left" @click="scrollTo('left')">
+        <ArrowLeft />
+      </el-icon>
+    </el-tooltip>
+    <el-scrollbar ref="scrollbarRef" @wheel.passive="wheelScroll" @scroll="scroll">
+      <div ref="scrollbarContentRef" class="scrollbar-content">
+        <slot />
+      </div>
+    </el-scrollbar>
+    <el-tooltip content="向右滚动标签（超出最大宽度可点击）">
+      <el-icon class="arrow right" @click="scrollTo('right')">
+        <ArrowRight />
+      </el-icon>
+    </el-tooltip>
+    <Screenfull v-if="settingsStore.showScreenfull" :content="true" class="screenfull" />
+  </div>
+</template>
+
 <script lang="ts" setup>
 import type { RouterLink } from "vue-router"
 import Screenfull from "@@/components/Screenfull/index.vue"
@@ -102,27 +123,6 @@ listenerRouteChange(() => {
   nextTick(moveTo)
 })
 </script>
-
-<template>
-  <div class="scroll-container">
-    <el-tooltip content="向左滚动标签（超出最大宽度可点击）">
-      <el-icon class="arrow left" @click="scrollTo('left')">
-        <ArrowLeft />
-      </el-icon>
-    </el-tooltip>
-    <el-scrollbar ref="scrollbarRef" @wheel.passive="wheelScroll" @scroll="scroll">
-      <div ref="scrollbarContentRef" class="scrollbar-content">
-        <slot />
-      </div>
-    </el-scrollbar>
-    <el-tooltip content="向右滚动标签（超出最大宽度可点击）">
-      <el-icon class="arrow right" @click="scrollTo('right')">
-        <ArrowRight />
-      </el-icon>
-    </el-tooltip>
-    <Screenfull v-if="settingsStore.showScreenfull" :content="true" class="screenfull" />
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .scroll-container {

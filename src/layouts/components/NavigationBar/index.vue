@@ -1,3 +1,41 @@
+<template>
+  <div class="navigation-bar">
+    <Hamburger
+      v-if="!isTop || isMobile"
+      :is-active="appStore.sidebar.opened"
+      class="hamburger"
+      @toggle-click="toggleSidebar"
+    />
+    <Breadcrumb v-if="!isTop || isMobile" class="breadcrumb" />
+    <Sidebar v-if="isTop && !isMobile" class="sidebar" />
+    <div class="right-menu">
+      <SearchMenu v-if="showSearchMenu" class="right-menu-item" />
+      <Screenfull v-if="showScreenfull" class="right-menu-item" />
+      <ThemeSwitch v-if="showThemeSwitch" class="right-menu-item" />
+      <Notify v-if="showNotify" class="right-menu-item" />
+      <el-dropdown>
+        <div class="right-menu-item user">
+          <el-avatar :icon="UserFilled" :size="30" />
+          <span>{{ userStore.username }}</span>
+        </div>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <a target="_blank" href="https://github.com/un-pany/v3-admin-vite">
+              <el-dropdown-item>GitHub</el-dropdown-item>
+            </a>
+            <a target="_blank" href="https://gitee.com/un-pany/v3-admin-vite">
+              <el-dropdown-item>Gitee</el-dropdown-item>
+            </a>
+            <el-dropdown-item divided @click="logout">
+              退出登录
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </div>
+  </div>
+</template>
+
 <script lang="ts" setup>
 import Notify from "@@/components/Notify/index.vue"
 import Screenfull from "@@/components/Screenfull/index.vue"
@@ -36,44 +74,6 @@ function logout() {
   router.push("/login")
 }
 </script>
-
-<template>
-  <div class="navigation-bar">
-    <Hamburger
-      v-if="!isTop || isMobile"
-      :is-active="appStore.sidebar.opened"
-      class="hamburger"
-      @toggle-click="toggleSidebar"
-    />
-    <Breadcrumb v-if="!isTop || isMobile" class="breadcrumb" />
-    <Sidebar v-if="isTop && !isMobile" class="sidebar" />
-    <div class="right-menu">
-      <SearchMenu v-if="showSearchMenu" class="right-menu-item" />
-      <Screenfull v-if="showScreenfull" class="right-menu-item" />
-      <ThemeSwitch v-if="showThemeSwitch" class="right-menu-item" />
-      <Notify v-if="showNotify" class="right-menu-item" />
-      <el-dropdown>
-        <div class="right-menu-item user">
-          <el-avatar :icon="UserFilled" :size="30" />
-          <span>{{ userStore.username }}</span>
-        </div>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <a target="_blank" href="https://github.com/un-pany/v3-admin-vite">
-              <el-dropdown-item>GitHub</el-dropdown-item>
-            </a>
-            <a target="_blank" href="https://gitee.com/un-pany/v3-admin-vite">
-              <el-dropdown-item>Gitee</el-dropdown-item>
-            </a>
-            <el-dropdown-item divided @click="logout">
-              退出登录
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
-    </div>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .navigation-bar {

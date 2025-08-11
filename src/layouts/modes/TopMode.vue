@@ -1,12 +1,3 @@
-<script lang="ts" setup>
-import { useSettingsStore } from "@/pinia/stores/settings"
-import { AppMain, Logo, NavigationBar, TagsView } from "../components"
-
-const settingsStore = useSettingsStore()
-
-const { showTagsView, showLogo } = storeToRefs(settingsStore)
-</script>
-
 <template>
   <div class="app-wrapper">
     <!-- 头部导航栏和标签栏 -->
@@ -24,6 +15,15 @@ const { showTagsView, showLogo } = storeToRefs(settingsStore)
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+import { useSettingsStore } from "@/pinia/stores/settings"
+import { AppMain, Logo, NavigationBar, TagsView } from "../components"
+
+const settingsStore = useSettingsStore()
+
+const { showTagsView, showLogo } = storeToRefs(settingsStore)
+</script>
 
 <style lang="scss" scoped>
 @import "@@/assets/styles/mixins.scss";

@@ -1,3 +1,22 @@
+<template>
+  <div class="app-container">
+    <el-alert
+      title="示例说明"
+      type="primary"
+      description="通过将要执行的函数传递给 composable，让 composable 自动开启全屏 loading，函数执行结束后自动关闭 loading"
+      show-icon
+    />
+    <el-card header="示例" shadow="never">
+      <el-button type="primary" @click="querySuccess">
+        查询成功
+      </el-button>
+      <el-button type="danger" @click="queryError">
+        查询失败
+      </el-button>
+    </el-card>
+  </div>
+</template>
+
 <script lang="ts" setup>
 import { useFullscreenLoading } from "@@/composables/useFullscreenLoading"
 import { getErrorApi, getSuccessApi } from "./apis/use-fullscreen-loading"
@@ -36,25 +55,6 @@ async function queryError() {
   }
 }
 </script>
-
-<template>
-  <div class="app-container">
-    <el-alert
-      title="示例说明"
-      type="primary"
-      description="通过将要执行的函数传递给 composable，让 composable 自动开启全屏 loading，函数执行结束后自动关闭 loading"
-      show-icon
-    />
-    <el-card header="示例" shadow="never">
-      <el-button type="primary" @click="querySuccess">
-        查询成功
-      </el-button>
-      <el-button type="danger" @click="queryError">
-        查询失败
-      </el-button>
-    </el-card>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .el-alert {
