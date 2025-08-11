@@ -4,7 +4,7 @@
       <Edit />
     </el-icon>
 
-    <el-select v-model="data.value" class="m-2" placeholder="Select" size="large" style="width: 240px">
+    <el-select v-model="data.value" size="large" style="width: 240px">
       <el-option v-for="item in data.options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
@@ -13,6 +13,6 @@
 <script lang="ts" setup>
 const data = reactive({
   value: '',
-  options: [{ value: '12312', label: '123s' }]
+  options: []
 })
 </script>
