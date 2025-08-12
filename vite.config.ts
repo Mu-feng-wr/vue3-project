@@ -2,11 +2,13 @@
 
 import { resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
+import { factory } from 'typescript'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import SvgComponent from 'unplugin-svg-component/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
+import vueSetupExtend from 'unplugin-vue-setup-extend-plus/vite'
 import { defineConfig } from 'vite' // loadEnv
 import svgLoader from 'vite-svg-loader'
 
@@ -100,6 +102,7 @@ export default defineConfig(({ mode }) => {
     },
     // 插件配置
     plugins: [
+      vueSetupExtend({ enableAutoExpose: false }),
       vue(),
       // 支持将 SVG 文件导入为 Vue 组件
       svgLoader({
