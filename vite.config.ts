@@ -2,7 +2,6 @@
 
 import { resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
-import { factory } from 'typescript'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import SvgComponent from 'unplugin-svg-component/vite'
@@ -12,7 +11,6 @@ import vueSetupExtend from 'unplugin-vue-setup-extend-plus/vite'
 import { defineConfig } from 'vite' // loadEnv
 import svgLoader from 'vite-svg-loader'
 
-// Configuring Vite: https://cn.vite.dev/config
 export default defineConfig(({ mode }) => {
   const VITE_PUBLIC_PATH = ''
   return {
@@ -79,6 +77,7 @@ export default defineConfig(({ mode }) => {
       // 单个 chunk 文件的大小超过 2048kB 时发出警告
       chunkSizeWarningLimit: 2048
     },
+
     // 混淆器
     esbuild:
       mode === 'development'
@@ -113,7 +112,6 @@ export default defineConfig(({ mode }) => {
               name: 'preset-default',
               params: {
                 overrides: {
-                  // @see https://github.com/svg/svgo/issues/1128
                   removeViewBox: false
                 }
               }
@@ -126,23 +124,22 @@ export default defineConfig(({ mode }) => {
         iconDir: [resolve(__dirname, 'src/common/assets/icons')],
         preserveColor: resolve(__dirname, 'src/common/assets/icons/preserve-color'),
         dts: true,
-        dtsDir: resolve(__dirname, 'types/auto')
+        dtsDir: resolve(__dirname, 'autoImport')
       }),
       // 原子化 CSS
       UnoCSS(),
       // 自动按需导入 API
       AutoImport({
         imports: ['vue', 'vue-router', 'pinia'],
-        dts: 'types/auto/auto-imports.d.ts',
+        dts: 'autoImport/globalImportApis.d.ts',
         resolvers: [ElementPlusResolver()]
       }),
       // 自动按需导入组件
       Components({
-        dts: 'types/auto/components.d.ts',
+        dts: 'autoImport/globalComponents.d.ts',
         resolvers: [ElementPlusResolver()]
       })
     ],
-    // Configuring Vitest: https://cn.vitest.dev/config
     test: {
       include: ['tests/**/*.test.{ts,js}'],
       environment: 'happy-dom',
