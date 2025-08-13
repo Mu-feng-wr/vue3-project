@@ -10,7 +10,6 @@
 // import { useTheme } from "@@/composables/useTheme"
 import zhCn from 'element-plus/es/locale/lang/zh-cn.mjs'
 // Element Plus 中文包
-console.log(zhCn)
 // const { initTheme } = useTheme()
 
 // const { initGreyAndColorWeakness } = useGreyAndColorWeakness()

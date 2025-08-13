@@ -2,13 +2,14 @@
 
 import { resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
+import { factory } from 'typescript'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import SvgComponent from 'unplugin-svg-component/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
+import vueSetupExtend from 'unplugin-vue-setup-extend-plus/vite'
 import { defineConfig } from 'vite' // loadEnv
-// import { VueMcp } from "vite-plugin-vue-mcp"
 import svgLoader from 'vite-svg-loader'
 
 // Configuring Vite: https://cn.vite.dev/config
@@ -39,7 +40,7 @@ export default defineConfig(({ mode }) => {
       proxy: {
         '/api/v1': {
           target: 'https://apifoxmock.com/m1/2930465-2145633-default',
-          // 是否为 WebSocket
+          // 是否为 WebSockets
           ws: false,
           // 是否允许跨域
           changeOrigin: true
@@ -101,6 +102,7 @@ export default defineConfig(({ mode }) => {
     },
     // 插件配置
     plugins: [
+      vueSetupExtend({ enableAutoExpose: false }),
       vue(),
       // 支持将 SVG 文件导入为 Vue 组件
       svgLoader({
@@ -139,8 +141,6 @@ export default defineConfig(({ mode }) => {
         dts: 'types/auto/components.d.ts',
         resolvers: [ElementPlusResolver()]
       })
-      // 为项目开启 MCP Server
-      // VueMcp()
     ],
     // Configuring Vitest: https://cn.vitest.dev/config
     test: {
