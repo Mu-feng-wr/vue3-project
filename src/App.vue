@@ -11,9 +11,7 @@
 import zhCn from 'element-plus/es/locale/lang/zh-cn.mjs'
 // Element Plus 中文包
 // const { initTheme } = useTheme()
-
 // const { initGreyAndColorWeakness } = useGreyAndColorWeakness()
-
 // 初始化主题
 // initTheme()
 

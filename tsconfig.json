@@ -18,9 +18,9 @@
       "@/*": [
         "src/*"
       ],
-      "@@/*": [
-        "src/common/*"
-      ],
+      // "@@/*": [
+      //   "src/common/*"
+      // ],
       "element-plus/*": ["node_modules/element-plus/*"]
     },
     "resolveJsonModule": true,

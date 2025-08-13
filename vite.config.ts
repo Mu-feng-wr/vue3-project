@@ -19,9 +19,9 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         // @ 符号指向 src 目录
-        '@': resolve(__dirname, 'src'),
+        '@': resolve(__dirname, 'src')
         // @@ 符号指向 src/common 通用目录
-        '@@': resolve(__dirname, 'src/common')
+        // '@@': resolve(__dirname, 'src/common')
       }
     },
     // 开发环境服务器配置
