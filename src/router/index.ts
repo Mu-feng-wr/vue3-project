@@ -20,20 +20,20 @@ export const constantRoutes: RouteRecordRaw[] = [
     // children: [
     //   {
     //     path: ":path(.*)",
-    //     component: () => import("@/pages/redirect/index.vue")
+    //     component: () => import("@/views/redirect/index.vue")
     //   }
     // ]
   },
   {
     path: '/403',
-    component: () => import('@/pages/error/403.vue'),
+    component: () => import('@/views/error/403.vue'),
     meta: {
       hidden: true
     }
   },
   {
     path: '/404',
-    component: () => import('@/pages/error/404.vue'),
+    component: () => import('@/views/error/404.vue'),
     meta: {
       hidden: true
     },
@@ -41,7 +41,7 @@ export const constantRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/login',
-    component: () => import('@/pages/login/index.vue'),
+    component: () => import('@/views/login/index.vue'),
     meta: {
       hidden: true
     }
@@ -53,7 +53,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     children: [
       // {
       //   path: "dashboard",
-      //   component: () => import("@/pages/dashboard/index.vue"),
+      //   component: () => import("@/views/dashboard/index.vue"),
       //   name: "Dashboard",
       //   meta: {
       //     title: "首页",
@@ -75,7 +75,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     children: [
       // {
       //   path: "unocss",
-      //   component: () => import("@/pages/demo/unocss/index.vue"),
+      //   component: () => import("@/views/demo/unocss/index.vue"),
       //   name: "UnoCSS",
       //   meta: {
       //     title: "UnoCSS"
@@ -83,7 +83,7 @@ export const constantRoutes: RouteRecordRaw[] = [
       // },
       // {
       //   path: "element-plus",
-      //   component: () => import("@/pages/demo/element-plus/index.vue"),
+      //   component: () => import("@/views/demo/element-plus/index.vue"),
       //   name: "ElementPlus",
       //   meta: {
       //     title: "Element Plus",
@@ -92,7 +92,7 @@ export const constantRoutes: RouteRecordRaw[] = [
       // },
       // {
       //   path: "vxe-table",
-      //   component: () => import("@/pages/demo/vxe-table/index.vue"),
+      //   component: () => import("@/views/demo/vxe-table/index.vue"),
       //   name: "VxeTable",
       //   meta: {
       //     title: "Vxe Table",
@@ -101,7 +101,7 @@ export const constantRoutes: RouteRecordRaw[] = [
       // },
       // {
       //   path: "level2",
-      //   component: () => import("@/pages/demo/level2/index.vue"),
+      //   component: () => import("@/views/demo/level2/index.vue"),
       //   redirect: "/demo/level2/level3",
       //   name: "Level2",
       //   meta: {
@@ -111,7 +111,7 @@ export const constantRoutes: RouteRecordRaw[] = [
       //   children: [
       //     {
       //       path: "level3",
-      //       component: () => import("@/pages/demo/level2/level3/index.vue"),
+      //       component: () => import("@/views/demo/level2/level3/index.vue"),
       //       name: "Level3",
       //       meta: {
       //         title: "三级路由",
@@ -130,7 +130,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         children: [
           // {
           //   path: "use-fetch-select",
-          //   component: () => import("@/pages/demo/composable-demo/use-fetch-select.vue"),
+          //   component: () => import("@/views/demo/composable-demo/use-fetch-select.vue"),
           //   name: "UseFetchSelect",
           //   meta: {
           //     title: "useFetchSelect"
@@ -138,7 +138,7 @@ export const constantRoutes: RouteRecordRaw[] = [
           // },
           // {
           //   path: "use-fullscreen-loading",
-          //   component: () => import("@/pages/demo/composable-demo/use-fullscreen-loading.vue"),
+          //   component: () => import("@/views/demo/composable-demo/use-fullscreen-loading.vue"),
           //   name: "UseFullscreenLoading",
           //   meta: {
           //     title: "useFullscreenLoading"
@@ -146,7 +146,7 @@ export const constantRoutes: RouteRecordRaw[] = [
           // },
           // {
           //   path: "use-watermark",
-          //   component: () => import("@/pages/demo/composable-demo/use-watermark.vue"),
+          //   component: () => import("@/views/demo/composable-demo/use-watermark.vue"),
           //   name: "UseWatermark",
           //   meta: {
           //     title: "useWatermark"
@@ -204,7 +204,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
     children: [
       // {
       //   path: "page-level",
-      //   component: () => import("@/pages/demo/permission/page-level.vue"),
+      //   component: () => import("@/views/demo/permission/page-level.vue"),
       //   name: "PermissionPageLevel",
       //   meta: {
       //     title: "页面级",
@@ -214,7 +214,7 @@ export const dynamicRoutes: RouteRecordRaw[] = [
       // },
       // {
       //   path: "button-level",
-      //   component: () => import("@/pages/demo/permission/button-level.vue"),
+      //   component: () => import("@/views/demo/permission/button-level.vue"),
       //   name: "PermissionButtonLevel",
       //   meta: {
       //     title: "按钮级",
