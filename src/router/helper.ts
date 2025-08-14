@@ -1,11 +1,11 @@
 import type { Router, RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
-import { cloneDeep, omit } from 'lodash-es'
 import { createRouter } from 'vue-router'
+import { clone, omit } from 'xe-utils'
 import { routerConfig } from './config'
 
 /** 路由降级（把三级及其以上的路由转化为二级路由） */
 export function flatMultiLevelRoutes(routes: RouteRecordRaw[]) {
-  const routesMirror = cloneDeep(routes)
+  const routesMirror = clone(routes, true)
   routesMirror.forEach((route) => {
     // 如果路由是三级及其以上路由，对其进行降级处理
     isMultipleRoute(route) && promoteRouteLevel(route)
@@ -33,7 +33,7 @@ function promoteRouteLevel(route: RouteRecordRaw) {
   addToChildren(routes, route.children || [], route)
   router = null
   // 转为二级路由后，去除所有子路由中的 children
-  route.children = route.children?.map(item => omit(item, 'children') as RouteRecordRaw)
+  route.children = route.children?.map(item => omit(item, ['children']) as RouteRecordRaw)
 }
 
 /** 将给定的子路由添加到指定的路由模块中 */
