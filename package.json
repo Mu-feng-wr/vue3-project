@@ -25,6 +25,7 @@
     "path-browserify": "1.0.1",
     "path-to-regexp": "8.2.0",
     "pinia": "3.0.3",
+    "qiankun": "2.10.16",
     "screenfull": "6.0.2",
     "unplugin-vue-setup-extend-plus": "1.0.1",
     "vue": "3.5.17",

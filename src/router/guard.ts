@@ -15,7 +15,7 @@ NProgress.configure({ showSpinner: false })
 // const LOGIN_PATH = '/login'
 
 export function registerNavigationGuard(router: Router) {
-  console.log(router)
+  // console.log(router)s
   // // 全局前置守卫
   // router.beforeEach(async (to, _from) => {
   //   NProgress.start()
